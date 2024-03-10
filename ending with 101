@@ -32,7 +32,7 @@ int main(){
 				current_state = q1;
 			}
 	
-}
+	}
 	if (current_state == q3){
 		cout<<"\n" << str << " is acceptable" << endl;
 	}
