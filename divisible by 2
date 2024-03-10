@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    int q0 = 0, q1 = 1;
+    string str;
+    int current_state = q0;
+    char ch;
+    cout << "Enter the string: "<<endl;
+    cin >> str;
+    for (int i = 0; i < str.length(); ++i)
+    {
+        ch = str[i];
+        if (current_state == q0 && (ch == '0' || ch == '2' || ch == '4' || ch == '6' || ch == '8'))
+        {
+            current_state = q0;
+        }
+        else if (current_state == q0 && (ch == '1' || ch == '3' || ch == '5' || ch == '7' || ch == '9'))
+        {
+            current_state = q1;
+        }
+        else if (current_state == q1 && (ch == '0' || ch == '2' || ch == '4' || ch == '6' || ch == '8'))
+        {
+            current_state = q0;
+        }
+        else if (current_state == q1 && (ch == '1' || ch == '3' || ch == '5' || ch == '7' || ch == '9'))
+        {
+            current_state= q1;
+        }
+    }
+    if (current_state == q0)
+    {
+        cout << "\n"<< str << " is acceptable"<<endl;
+    }
+    else
+    {
+        cout << "\n"<< str << "is not acceptable"<<endl;
+    }
+    return 0;
+}
