@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	string op1,op2,sum;
+	sum = " ";
+	int q0 = 0,q1 = 1;
+	int current_state = q0;
+	char d1, d2;
+	bool carry = false;
+	cout<<"\n Enter the first binary number" << endl;
+	cin>>op1;
+	cout<<"\n Enter the second binary number" << endl;
+	cin>>op2;
+	for(int i = op1.length()-1; i >=0 ; --i){
+		d1 = op1[i];
+		d2 = op2[i];
+		if (d1 == '0' && d2 == '0'){
+			sum = (carry ? "1" : "0") + sum;
+			carry = false;
+			current_state = q0;
+		}
+		else if(d1 == '0' && d2 == '1'){
+			sum = (carry ? "0" : "1") + sum;
+			carry = current_state == q0 ? false : true;
+			current_state = carry ? q1 : q0;
+		}
+		else if (d1 == '1' && d2 == '0'){
+			sum = (carry ? "0" : "1") + sum;
+			carry = current_state == q0 ? false : true;
+			current_state = carry ? q1 : q0;
+		}
+		else if(d1 == '1' && d2 == '1'){
+			sum = (carry ? "1" : "0") + sum;
+			carry = true;
+			current_state = q1;
+		}
+	}
+	cout<<"\n" << "The sum is"<<sum<<endl;
+	return 0;
+}
